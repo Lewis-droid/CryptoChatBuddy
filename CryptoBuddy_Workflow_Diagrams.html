@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CryptoBuddy Workflow Diagrams</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .diagram { border: 2px solid #333; padding: 20px; margin: 30px 0; background: #f9f9f9; }
+        .box { border: 1px solid #666; padding: 10px; margin: 10px; text-align: center; background: white; }
+        .decision { border-radius: 50px; background: #ffe6cc; }
+        .process { background: #e6f3ff; }
+        .start-end { background: #e6ffe6; border-radius: 20px; }
+        .arrow { text-align: center; font-size: 20px; margin: 5px 0; }
+        h1, h2 { color: #333; }
+        .flow-container { display: flex; flex-direction: column; align-items: center; }
+    </style>
+</head>
+<body>
+    <h1>CryptoBuddy 🤖 - Workflow Diagrams</h1>
+
+    <div class="diagram">
+        <h2>1. Web Application Flow</h2>
+        <div class="flow-container">
+            <div class="box start-end">User Opens Browser</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Flask serves index.html</div>
+            <div class="arrow">↓</div>
+            <div class="box process">User types message</div>
+            <div class="arrow">↓</div>
+            <div class="box process">JavaScript sends POST to /get_response</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Flask processes message</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Bot generates response</div>
+            <div class="arrow">↓</div>
+            <div class="box process">JSON response sent back</div>
+            <div class="arrow">↓</div>
+            <div class="box start-end">Response displayed in chat</div>
+        </div>
+    </div>
+
+    <div class="diagram">
+        <h2>2. Intent Detection Process</h2>
+        <div class="flow-container">
+            <div class="box start-end">User Query Received</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Convert to lowercase & split words</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Check each word against keyword database</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Use difflib fuzzy matching (70% threshold)</div>
+            <div class="arrow">↓</div>
+            <div class="box decision">Match Found?</div>
+            <div class="arrow">↓ YES</div>
+            <div class="box process">Return Intent Category</div>
+            <div class="arrow">↓ NO</div>
+            <div class="box process">Check multi-word phrases</div>
+            <div class="arrow">↓</div>
+            <div class="box start-end">Return Intent or None</div>
+        </div>
+    </div>
+
+    <div class="diagram">
+        <h2>3. Response Generation Logic</h2>
+        <div class="flow-container">
+            <div class="box start-end">Intent Detected</div>
+            <div class="arrow">↓</div>
+            <div class="box decision">Intent Type?</div>
+            <div style="display: flex; justify-content: space-around; width: 100%;">
+                <div style="text-align: center;">
+                    <div class="box process">Greeting</div>
+                    <div class="arrow">↓</div>
+                    <div class="box process">Random welcome message</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="box process">Sustainable</div>
+                    <div class="arrow">↓</div>
+                    <div class="box process">Find highest eco-score coin</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="box process">Profitable</div>
+                    <div class="arrow">↓</div>
+                    <div class="box process">Find rising + high market cap</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="box process">Trending</div>
+                    <div class="arrow">↓</div>
+                    <div class="box process">List all rising coins</div>
+                </div>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="box decision">No Intent Match?</div>
+            <div class="arrow">↓ YES</div>
+            <div class="box process">Check learned responses</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Store query for learning</div>
+            <div class="arrow">↓</div>
+            <div class="box start-end">Return Response</div>
+        </div>
+    </div>
+
+    <div class="diagram">
+        <h2>4. Command Line Interface Flow</h2>
+        <div class="flow-container">
+            <div class="box start-end">Start cryptoBot.py</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Display welcome message</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Wait for user input</div>
+            <div class="arrow">↓</div>
+            <div class="box decision">Input = 'quit'?</div>
+            <div class="arrow">↓ YES</div>
+            <div class="box start-end">Exit program</div>
+            <div class="arrow">↓ NO</div>
+            <div class="box process">Process with chatbot_response()</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Print bot response</div>
+            <div class="arrow">↓</div>
+            <div class="box process">Loop back to input</div>
+        </div>
+    </div>
+
+    <div class="diagram">
+        <h2>5. Data Structure Overview</h2>
+        <div class="flow-container">
+            <div class="box process">crypto_db Dictionary</div>
+            <div class="arrow">↓</div>
+            <div style="display: flex; justify-content: space-around; width: 100%;">
+                <div class="box process">Bitcoin<br/>• High market cap<br/>• Rising trend<br/>• High energy use<br/>• Low sustainability</div>
+                <div class="box process">Ethereum<br/>• High market cap<br/>• Stable trend<br/>• Medium energy use<br/>• Medium sustainability</div>
+                <div class="box process">Cardano<br/>• Medium market cap<br/>• Rising trend<br/>• Low energy use<br/>• High sustainability</div>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="box process">learned_responses Dictionary<br/>(Stores user-taught responses)</div>
+        </div>
+    </div>
+
+    <div class="diagram">
+        <h2>6. System Architecture</h2>
+        <div class="flow-container">
+            <div style="display: flex; justify-content: space-around; width: 100%;">
+                <div style="text-align: center;">
+                    <h3>Frontend</h3>
+                    <div class="box process">HTML5 Interface</div>
+                    <div class="box process">CSS3 Styling</div>
+                    <div class="box process">jQuery AJAX</div>
+                </div>
+                <div style="text-align: center;">
+                    <h3>Backend</h3>
+                    <div class="box process">Flask Server</div>
+                    <div class="box process">Intent Detection</div>
+                    <div class="box process">Response Logic</div>
+                </div>
+                <div style="text-align: center;">
+                    <h3>Data Layer</h3>
+                    <div class="box process">Crypto Database</div>
+                    <div class="box process">Learned Responses</div>
+                    <div class="box process">Keywords Map</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr style="margin: 40px 0;">
+    <p><strong>Instructions:</strong> To convert to Word document, open this HTML file in Microsoft Word and save as .docx format.</p>
+</body>
+</html>
